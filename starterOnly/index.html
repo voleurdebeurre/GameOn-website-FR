@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
   </head>
   <body>
+    <a href="javascript:void(0);" class="icon" onclick="editNav()">
+      <i class="fa fa-bars"></i>
+    </a>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
@@ -19,9 +22,6 @@
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
     </div>
     </div>
   </div>
@@ -56,27 +56,27 @@
               <div class="formData">
                 <label>Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first" /><br>
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
               </div>
               <div class="formData">
                 <label>Nom</label><br>
                 <input class="text-control" type="text" id="last" name="last" /><br>
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
               </div>
               <div class="formData">
                 <label>E-mail</label><br>
                 <input class="text-control" type="text" id="email" name="email" /><br>
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
               </div>
               <div class="formData">
                 <label>Date de naissance</label><br>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
               </div>
               <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="text" class="text-control" id="quantity" name="quantity" min="0" max="99">
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div class="formData">
@@ -112,7 +112,7 @@
                   <span class="checkbox-icon"></span>
                   Portland
                 </label>
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
               </div>
 
               <div class="formData">
@@ -121,7 +121,7 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
@@ -129,7 +129,7 @@
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
-                <div class="invalid"></div>
+                <div class="invalidfeedback"></div>
               </div>
               <input class="btn-submit" type="submit" class="button" value="C'est parti" />
             </form>

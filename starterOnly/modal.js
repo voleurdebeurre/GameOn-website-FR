@@ -1,9 +1,9 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+  var navTrigger = document.querySelector(".main-navbar");
+  if (navTrigger.style.display === "block") {
+    navTrigger.style.display = "none";
   } else {
-    x.className = "topnav";
+    navTrigger.style.display = "block";
   }
 }
 
@@ -25,6 +25,22 @@ modalCloseBtn.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  clearFormFieldsFeedback()
+}
+
+function clearFormFieldsFeedback(){
+  let getAllFormFields = document.querySelectorAll('.formData');
+  let getAllFormFeedbacks = document.querySelectorAll('.invalidfeedback');
+  for( i = 0; i < getAllFormFeedbacks.length; i++){
+    getAllFormFeedbacks[i].innerHTML = "";
+  }
+  for( j = 0; j < getAllFormFields.length; j++){
+    getAllFormFields[j].classList.remove("invalid");
+  }
+}
+
+function clearFormFields(){
+  document.querySelector('.userform').reset();
 }
 
 // close modal
@@ -54,7 +70,6 @@ userNewsletter = document.querySelector("#checkbox2");
 // submit button event
 formToValidate.addEventListener("submit", (e) => {
   // prevents default behaviour on submit
-  console.log(userTermsAndConditions.checked);
   e.preventDefault();
   // validate fields
   let isFirstNameValid = checkFirstName(),
@@ -103,11 +118,12 @@ const isEmailValid = (email) => {
 const validationError = (field, message) => {
   // targets the parent div of the field => (div class formData)
   const getField = field.parentElement;
+
   // adds the class to display the error
   getField.classList.remove("valid");
   getField.classList.add("invalid");
   // shows the error error message in the div class invalid
-  const errorMessage = getField.querySelector(".invalid");
+  const errorMessage = getField.querySelector(".invalidfeedback");
   errorMessage.textContent = message
 }
 
@@ -122,7 +138,7 @@ const validationSuccess = (field) => {
     getField.classList.add('valid');
 
     // hides the error message
-    const errorMessage = getField.querySelector(".invalid");
+    const errorMessage = getField.querySelector(".invalidfeedback");
     errorMessage.textContent = '';
 }
 
