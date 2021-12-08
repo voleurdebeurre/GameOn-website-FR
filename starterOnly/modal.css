@@ -219,6 +219,30 @@ main {
   padding-top: 10px;
 }
 
+.content-valid{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #232323;
+  padding: 40% 10px 10px 10px;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+
+.content-valid p{
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.content-valid button{
+  margin: 0 auto;
+}
+
+.toggle-form-valid{
+  display: block;
+}
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;

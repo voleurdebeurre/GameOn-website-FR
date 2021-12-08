@@ -12,33 +12,46 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
+const modalCloseBtnValid = document.querySelector(".form-valid-close");
 
 const submitBtn = document.querySelector(".btn-submit");
 const formToValidate = document.querySelector(".userform");
+
+const formFeedbackMessage = document.querySelector(".content-valid");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal events
 modalCloseBtn.addEventListener("click", closeModal);
+modalCloseBtnValid.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  clearFormFieldsFeedback()
+  formFeedbackMessage.classList.remove("toggle-form-valid");
+  clearFormFieldsFeedback();
 }
 
+// Function to remove all feedbacks on the fields
 function clearFormFieldsFeedback(){
+  // Targets the fields
   let getAllFormFields = document.querySelectorAll('.formData');
+  // Targets the messages
   let getAllFormFeedbacks = document.querySelectorAll('.invalidfeedback');
+  // For each error message
   for( i = 0; i < getAllFormFeedbacks.length; i++){
+    // Empty the div
     getAllFormFeedbacks[i].innerHTML = "";
   }
+  // For each field
   for( j = 0; j < getAllFormFields.length; j++){
+    // Removes the class that outlines it red
     getAllFormFields[j].classList.remove("invalid");
   }
 }
 
+// Function to reset the form inputs
 function clearFormFields(){
   document.querySelector('.userform').reset();
 }
@@ -46,6 +59,8 @@ function clearFormFields(){
 // close modal
 function closeModal() {
   modalbg.style.display = "none";
+  // Clears all the fields on modal close
+  clearFormFields()
 }
 
 
@@ -91,8 +106,9 @@ formToValidate.addEventListener("submit", (e) => {
 
   // submit to the server if the form is valid
   if (isFormValid) {
-    console.log("Send to back end")
-
+    console.log("Send to back end");
+    // Displays thank you message
+    formFeedbackMessage.classList.add("toggle-form-valid");
   }
 })
 
@@ -255,15 +271,21 @@ const checkBirthDate = () => {
   return valid;
 }
 
+// Checks if a city is checked
 const checkCities = () => {
+  // by default the input is not valid
   let valid = false;
-
+  // set iterator
   let i = 0;
+  // while i is smaller than the number of radio buttons
   while (i < userTournamentCities.length) {
+    // checks if a radio button is checked
     if (userTournamentCities[i].checked) valid = true;
+    // if not, iterates
     i++;
   }
 
+  // if no radio button has been checked
   if(!valid){
     validationError(userTournamentCities[0], "Please choose a city")
   }else{
@@ -273,9 +295,11 @@ const checkCities = () => {
   return valid;
 }
 
+// Checks if terms and conditions checkbox is checked
 const checkTerms = () => {
+  // by default the input is not valid
   let valid = false;
-
+  // Checks if checkbox has attribute checked
   if(!userTermsAndConditions.checked){
     validationError(userTermsAndConditions, "You must accept the terms & conditions")
   }else{
