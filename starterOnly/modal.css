@@ -43,7 +43,7 @@ img {
     float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -72,7 +72,6 @@ img {
 .topnav .icon {
   display: none;
 }
-
 
 @media screen and (max-width: 768px) {
   .main-navbar{
@@ -130,7 +129,7 @@ img {
 
 
  @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+  /* .topnav a {display: none;} */
   .topnav a.icon {
     float: right;
     display: block;
@@ -584,6 +583,10 @@ footer {
   .hero-headline{
     font-size: 4.5rem;
   }
+}
+
+.nav-open{
+  display: block;
 }
 
 @keyframes modalopen {

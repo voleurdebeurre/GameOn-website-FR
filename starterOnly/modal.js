@@ -1,12 +1,3 @@
-function editNav() {
-  var navTrigger = document.querySelector(".main-navbar");
-  if (navTrigger.style.display === "block") {
-    navTrigger.style.display = "none";
-  } else {
-    navTrigger.style.display = "block";
-  }
-}
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -19,6 +10,29 @@ const formToValidate = document.querySelector(".userform");
 
 const formFeedbackMessage = document.querySelector(".content-valid");
 
+const navBlock = document.querySelector(".main-navbar");
+const navTrigger = document.querySelector(".icon");
+
+
+// handles nav mobile open/close events
+navTrigger.onclick = function() {
+  if(navBlock.classList.contains("nav-open")){
+    navBlock.classList.remove("nav-open");
+  }else{
+    navBlock.classList.add("nav-open");
+  }
+}
+
+// shows/hide nav trigger depending on the width of the window
+// function showNavOnMobile(){
+//   if(window.innerWidth < "768"){
+//     navTrigger.style.display = "block";
+//     navBlock.style.display = "none";
+//   }else{
+//     navTrigger.style.display = "none";
+//   }
+// }
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -28,8 +42,11 @@ modalCloseBtnValid.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
+  // displays the modal
   modalbg.style.display = "block";
+  // makes sure that the feedback once form is valid is hidden
   formFeedbackMessage.classList.remove("toggle-form-valid");
+  // clears all fields
   clearFormFieldsFeedback();
 }
 
