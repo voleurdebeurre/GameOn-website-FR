@@ -12,7 +12,7 @@ navTrigger.onclick = function() {
     navBlock.classList.remove("nav-open");
   }else{
     navBlock.classList.add("nav-open");
-  }
+  } 
 }
 
 //------------------------------ //
@@ -43,7 +43,7 @@ modalCloseBtnValid.addEventListener("click", closeModal);
 function launchModal() {
   // displays the modal
   modalbg.style.display = "block";
-  // makes sure that the feedback once form is valid is hidden
+  // makes sure that the feedback once form is hidden is valid
   formFeedbackMessage.classList.remove("toggle-form-valid");
   // clears all fields
   clearFormFieldsFeedback();
