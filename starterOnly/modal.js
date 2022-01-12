@@ -1,3 +1,7 @@
+//-------------------------- //
+// -- NAVBAR DECLARATIONS -- //
+//-------------------------- //
+
 const navBlock = document.querySelector(".main-navbar");
 const navTrigger = document.querySelector(".icon");
 
@@ -10,6 +14,10 @@ navTrigger.onclick = function() {
     navBlock.classList.add("nav-open");
   }
 }
+
+//------------------------------ //
+// -- NAVBAR DECLARATIONS END -- //
+//------------------------------ //
 
 //--------------------------//
 // -- MODAL DECLARATIONS -- //
