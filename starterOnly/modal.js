@@ -1,15 +1,3 @@
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const modalCloseBtn = document.querySelector(".close");
-const modalCloseBtnValid = document.querySelector(".form-valid-close");
-
-const submitBtn = document.querySelector(".btn-submit");
-const formToValidate = document.querySelector(".userform");
-
-const formFeedbackMessage = document.querySelector(".content-valid");
-
 const navBlock = document.querySelector(".main-navbar");
 const navTrigger = document.querySelector(".icon");
 
@@ -23,15 +11,18 @@ navTrigger.onclick = function() {
   }
 }
 
-// shows/hide nav trigger depending on the width of the window
-// function showNavOnMobile(){
-//   if(window.innerWidth < "768"){
-//     navTrigger.style.display = "block";
-//     navBlock.style.display = "none";
-//   }else{
-//     navTrigger.style.display = "none";
-//   }
-// }
+//--------------------------//
+// -- MODAL DECLARATIONS -- //
+//------------------------- //
+
+// DOM Elements
+const modalbg = document.querySelector(".bground");
+const modalBtn = document.querySelectorAll(".modal-btn");
+const formData = document.querySelectorAll(".formData");
+const modalCloseBtn = document.querySelector(".close");
+const modalCloseBtnValid = document.querySelector(".form-valid-close");
+
+const formFeedbackMessage = document.querySelector(".content-valid");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -80,6 +71,13 @@ function closeModal() {
   clearFormFields()
 }
 
+//----------------------------- //
+// -- END MODAL DECLARATIONS -- //
+//----------------------------- //
+
+//----------------------------------- //
+// -- FORM VALIDATION DECLARATIONS -- //
+//----------------------------------- //
 
 // get form inputs
 // first name
@@ -98,6 +96,9 @@ userTournamentCities = document.getElementsByName("location"),
 userTermsAndConditions = document.querySelector("#checkbox1"),
 // newsletter
 userNewsletter = document.querySelector("#checkbox2");
+
+const submitBtn = document.querySelector(".btn-submit");
+const formToValidate = document.querySelector(".userform");
 
 // submit button event
 formToValidate.addEventListener("submit", (e) => {
@@ -138,6 +139,12 @@ const isMinimum = (length, min) => length < min ? false : true;
 //uses regex to check if input contains letters only
 const isOnlyLetters = (value) => {
   const regex = /[^a-zA-Z]/;
+  return regex.test(value);
+}
+
+//uses regex to check if input contains numbers only
+const isOnlyNumbers = (value) => {
+  const regex = /^[0-9]+$/;
   return regex.test(value);
 }
 
@@ -260,7 +267,7 @@ const checkTournamentQuantity = () => {
   if (!isRequired(tournamentQuantity)){
     validationError(userTournamentQuantity, "This field can not be empty.")
   // checks if field only contains numbers
-  }else if (!isOnlyLetters(tournamentQuantity)){
+}else if (!isOnlyNumbers(tournamentQuantity)){
     validationError(userTournamentQuantity, "This field should only contain numbers")
   // considers the input valid
   }else{
